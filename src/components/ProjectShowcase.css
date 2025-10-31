@@ -1,0 +1,135 @@
+
+  
+  /* Conteneur principal */
+  .app-container {
+    display: grid;
+    
+    overflow: hidden;
+  }
+  
+  /* Conteneur de contenu */
+  .content-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Colonne gauche : conteneur d'image */
+  .image-container {
+    flex: 1;
+    height: 50vh;
+    position: relative;
+    overflow: hidden; /* Ligne entre les colonnes */
+  }
+
+  /* Responsive pour tablette */
+  @media (max-width: 992px) {
+    .content-container {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .image-container {
+      height: 40vh;
+      width: 100%;
+    }
+
+    .sidebar {
+      padding: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .content-container {
+      flex-direction: column;
+      height: auto;
+    }
+
+    .image-container {
+      height: 30vh;
+      width: 100%;
+      flex: none;
+    }
+
+    .sidebar {
+      padding: 1rem;
+      width: 100%;
+    }
+  }
+  
+  /* Image animée */
+  .animated-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Image devient visible */
+  .animated-image[src] {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  
+  .sidebar {/* Largeur fixe de la colonne */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #000;
+    position: relative;
+  }
+  
+  /* Titre de la barre latérale */
+  .sidebar-title {
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #444;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Liste des projets */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+  
+  /* Élément de projet */
+  .project-item {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Ligne sous chaque projet */
+  .project-item::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+  }
+  
+  /* Au survol : texte plus clair et souligné */
+  .project-item:hover {
+    color: #aaa;
+    transform: translateX(10px);
+  }
+  
+  .project-item:hover::after {
+    width: 100%;
+  }
+  

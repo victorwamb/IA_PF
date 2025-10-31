@@ -1,0 +1,259 @@
+/* --------------------------- */
+/*  Container global           */
+/* --------------------------- */
+
+.products-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 0;
+    background-color: #000; /* Fond global en noir si nécessaire */
+  }
+  
+  /*
+     .product-card reste le wrapper principal
+     On conserve l’alignement à gauche/droite pour les 3 produits 
+  */
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 721px;
+    transition: transform 0.3s ease;
+    margin: 1rem;
+  }
+
+  /* Responsive pour mobile */
+  @media (max-width: 768px) {
+    .product-card {
+      width: calc(100% - 2rem);
+      max-width: 100%;
+      margin: 1rem auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-card {
+      width: calc(100% - 1rem);
+      margin: 0.5rem auto;
+    }
+  }
+  
+  .product-card.left {
+    align-self: flex-start;
+  }
+  
+  .product-card.right {
+    align-self: flex-end;
+  }
+  
+  /* --------------------------- */
+  /*  Fond noir & grille blanche */
+  /* --------------------------- */
+  .product-background {
+    /* Fond noir */
+    height: 570px;
+    background-color: #000;
+    background-image:
+      linear-gradient(#fff 1px, transparent 1px),
+      linear-gradient(90deg, #fff 1px, transparent 1px);
+    background-size: 16.65% 16.65%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  /* Responsive pour tablette */
+  @media (max-width: 992px) {
+    .product-background {
+      height: 450px;
+      background-size: 12% 12%;
+    }
+  }
+
+  /* Responsive pour mobile */
+  @media (max-width: 768px) {
+    .product-background {
+      height: 60vh;
+      max-height: 400px;
+      background-size: 15% 15%;
+      min-height: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-background {
+      height: 50vh;
+      max-height: 300px;
+      background-size: 24.9% 19.95%;
+      min-height: 250px;
+    }
+  }
+  
+  /* Légère déformation au survol */
+  .product-background:hover {
+    transform: skew(1deg, 1deg) scale(1.02);
+  }
+  
+  /* --------------------------- */
+  /*  ID et Date  (texte blanc)  */
+  /* --------------------------- */
+  .product-id,
+  .product-date {
+    position: absolute;
+    font-family: "LEMONMILK-Light";
+    color: #fff;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .product-id {
+    font-size: 3rem;
+    top: 1.2rem;
+    left: 0.8rem;
+  }
+
+  /* Responsive pour mobile */
+  @media (max-width: 768px) {
+    .product-id {
+      font-size: 2.5rem;
+      top: 1rem;
+      left: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-id {
+      font-size: 2rem;
+    }
+  }
+  
+  .product-date {
+    font-size: 2rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+
+  /* Responsive pour mobile */
+  @media (max-width: 768px) {
+    .product-date {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-date {
+      font-size: 1.2rem;
+    }
+  }
+  
+  /* --------------------------- */
+  /*  Gestion des images         */
+  /* --------------------------- */
+ .images-wrapper {
+  position: relative;
+  width: 70%;
+  height: auto;
+  overflow: visible; /* Permet aux images secondaires de dépasser */
+}
+
+.main-image {
+  display: block;
+  width: 100%;
+  transition: all 0.3s ease;
+  position: relative; /* Définit la position relative pour gérer z-index */
+  z-index: 10; /* L'image centrale reste au-dessus */
+}
+
+/* Les images secondaires sont partiellement visibles par défaut */
+.secondary-image {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotate(20deg); /* Ajoute une rotation par défaut */
+  width: 100%; /* Taille des images secondaires */
+  opacity: 0.5; /* Partiellement visible par défaut */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 5; /* Placées derrière l'image principale */
+}
+
+/* Positionne l'image du haut avec un léger décalage visible */
+.top-image {
+  top: -20%; /* L'image dépasse légèrement en haut */
+  transform: translate(-30%, 20%) rotate(10deg);
+}
+
+/* Positionne l'image du bas avec un léger décalage visible */
+.bottom-image {
+  bottom: -20%; /* L'image dépasse légèrement en bas */
+  transform: translate(-65%, -20%) rotate(-10deg);
+}
+
+/* Au survol, dévoile davantage les images secondaires */
+.product-background:hover .top-image {
+  transform: translate(-30%, -35%) rotate(10deg); /* Monte davantage et se redresse */
+  opacity: 1; /* Devient complètement visible */
+}
+
+.product-background:hover .bottom-image {
+  transform: translate(-70%, 40%) rotate(-10deg); /* Descend davantage et se redresse */
+  opacity: 1; /* Devient complètement visible */
+}
+/* Conteneur principal pour le premier bloc et le texte */
+.first-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem; /* Espace entre le bloc et le texte */
+}
+@media (max-width: 768px) {
+  .first-section {
+    flex-direction: column-reverse; /* Colonne sur mobile */
+    align-items: center; /* Centrer le contenu */
+  }
+}
+
+/* Texte à droite du premier bloc */
+.text-section {
+  flex: 1; /* Permet au texte de prendre l'espace restant */
+}
+
+.text-section h2 {
+  text-align: right;
+  margin-right: 5%;
+  font-size: 7.1rem;
+  font-family:"lemonmilk-light";
+  color: #ffffff; /* Exemple de couleur, ajustez selon vos besoins */
+  margin-bottom: 1rem;
+}
+
+.text-section p {
+  margin-left: 25%;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #a09f9f; /* Texte plus discret */
+}
+
+@media (max-width: 768px) {
+  .text-section{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .first-section {
+    flex-direction: column-reverse; /* Colonne sur mobile */
+    align-items: center; /* Centrer le contenu */
+  }
+  .text-section h2{
+    text-align: center; /* Centrer le texte sur mobile */
+    margin-right: 0; /* Supprimer le margin sur mobile */
+    font-size: 5em;
+  }
+  .text-section p {
+    margin-left: 0; /* Supprimer le margin sur mobile */
+    text-align: center; /* Centrer le texte sur mobile */
+    font-size: 1.2em;
+  }
+}

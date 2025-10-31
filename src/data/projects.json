@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "title": "Fairval - Legal AI with RAG",
+    "titleSimple": "#01",
+    "description": "Développement complet d'une IA juridique basée sur une architecture RAG (Retrieval-Augmented Generation) pour une plateforme de collaboration aviation.",
+    "description2": "Création d'une IA juridique autonome utilisant Python, fine-tuning et RAG avec un LLM local LLaMA 3. Système de récupération vectorielle FAISS pour l'accès aux documents juridiques pertinents, avec une couche de génération augmentée pour des réponses précises et contextualisées.    ",
+    "description3": "Mise en place d'une pipeline complète de traitement de documents (chunking, embedding, indexation) couplée à un fine-tuning du modèle LLaMA 3 sur des données juridiques spécialisées. Optimisation des prompts pour maximiser la précision des réponses. Interface Streamlit pour l'interaction utilisateur. Backend FastAPI pour la gestion des requêtes et l'orchestration du système RAG.",
+    "details": "Architecture RAG complète avec base de données vectorielle FAISS, fine-tuning LLM sur données juridiques, pipeline de traitement et embedding de documents. Système capable de répondre à des questions complexes en droit de l'aviation en s'appuyant sur une base de connaissances structurée.",
+    "technologies": ["Python", " - LLaMA 3", " - RAG", " - FAISS", " - Fine-tuning", " - FastAPI", " - Streamlit"],
+    "date": "2025",
+    "categorie": ["AI/ML", " - Backend", " - RAG Systems"],
+    "image": "project1/img1.png",
+    "imageSimple": "project1/img1.png",
+    "images": [
+      "project1/img1.png",
+      "project1/img4.jpeg",
+      "project1/ia.png",
+      "project1/img5.png"
+    ],
+    "type": "Web developpement",
+    "vue": "https://fairval.com"
+  },
+  {
+    "id": 2,
+    "title": "Pokédex",
+    "titleSimple": "#02",
+    "description": "Mon Pokédex interactif, développé en React, permet d'explorer tous les Pokémon en temps réel grâce à une API et offre une expérience immersive avec un design soigné.",
+    "description2": "Grâce à un sélecteur de langue intégré, je peux afficher les noms, descriptions et types des Pokémon dans différentes langues, rendant l'application accessible à un large public.",
+    "description3": "Avec une navigation fluide et un affichage dynamique, mon Pokédex propose une recherche intuitive et une interface responsive pour une exploration optimale de l'univers Pokémon.",
+    "details": "Ce projet permet aux utilisateurs de rechercher des Pokémon, d'afficher leurs statistiques et de voir leurs évolutions. Il utilise l'API PokéAPI et Material-UI pour un design fluide et intuitif.",
+    "technologies": ["React", " - Material-UI", " - PokéAPI"],
+    "date": "2024",
+    "categorie": ["Web developpement", " - Personal project"],
+    "image": "project2/img2.png",
+    "imageSimple": "project2/img2.png",
+    "images": [
+      "project2/img2.png",
+      "project2/img3.png",
+      "project2/img1.png",
+      "project2/PokedexList.webp"
+    ],
+    "type": "Web developpement",
+    "vue": "https://pokedex-victor.vercel.app/"
+  },
+  {
+    "id": 3,
+    "title": "Joy",
+    "titleSimple": "#03",
+    "description": "Le site a été développé avec une attention particulière aux performances et à la compatibilité sur tous les appareils. Grâce à une structure claire et un design responsive, Joy offre une expérience d'achat agréable et immersive.",
+    "details": "Mon projet Joy est un site e-commerce dédié à la vente de bougies, développé en HTML, CSS et PHP. J'ai conçu l'intégralité du site ainsi que l'identité visuelle de la marque, en créant un univers chaleureux et raffiné..",
+    "description2": "Le design du site a été soigneusement travaillé pour refléter l'élégance et l'artisanat des bougies Joy. J'ai réalisé le logo, la palette de couleurs et l'ensemble des visuels afin d'offrir une identité forte et cohérente à la marque.",
+    "description3": "L'expérience utilisateur a été optimisée grâce à une navigation fluide et intuitive, permettant aux visiteurs de découvrir facilement les différentes collections et de passer commande en toute simplicité.",
+    "technologies": ["PHP", " - HTML", " - CSS Animations"],
+    "date": "2023",
+    "categorie": ["Web developpement", " - Personal project"],
+    "image": "project6/img1.png",
+    "imageSimple": "project6/img1.png",
+    "images": [
+      "project6/img1.png",
+      "project6/img2.png",
+      "project6/img3.png",
+      "project6/img4.png"
+    ],
+    "type": "Web developpement/Design",
+    "vue": "none"
+  },
+  {
+    "id": 4,
+    "title": "The Demon Border",
+    "titleSimple": "#04",
+    "description": "Mon jeu The Demon Border, développé avec le moteur Godot, plonge les joueurs dans un univers sombre et captivant. J'ai conçu à la fois la direction artistique et le code, offrant une expérience immersive où chaque détail visuel et mécanique a été soigneusement pensé.",
+    "description2": "Avec une atmosphère unique et un gameplay engageant, The Demon Border propose des défis intenses et une progression rythmée. Grâce à un travail minutieux sur la DA et le level design, chaque environnement renforce l'immersion dans ce monde mystérieux et dangereux.",
+    "description3": "Alliant esthétique travaillée et mécaniques de jeu dynamiques, The Demon Border est une aventure qui met à l'épreuve les réflexes et la stratégie des joueurs. Son univers visuel et son gameplay fluide font de ce projet une expérience unique pour les amateurs de jeux indépendants.",
+    "details": "Ce projet propose une ambiance immersive avec une narration captivante et des mécaniques de jeu intrigantes.",
+    "technologies": ["Godot", " - Photoshop", " - Illustrator"],
+    "date": "2024",
+    "categorie": ["Web developpement", " - Personal project"],
+    "image": "project4/img1.png",
+    "imageSimple": "project4/img1.png",
+    "images": [
+      "project4/img1.png",
+      "project4/img2.png",
+      "project4/img3.png",
+      "project4/img4.png"
+    ],
+    "type": "Web developpement",
+    "vue": "none"
+  },
+  {
+    "id": 5,
+    "title": "Casual Swim",
+    "titleSimple": "#05",
+    "details": "Mon projet Casual Swim est un site e-commerce dédié aux maillots de bain féminins, conçu sur Wix. J'ai entièrement réalisé la plateforme ainsi que l'identité visuelle de la marque, en mettant en avant un design épuré et une expérience utilisateur fluide.",
+    "description": "Alliant esthétique et fonctionnalité, Casual Swim propose une navigation intuitive et un univers visuel harmonieux, pensé pour refléter l'élégance et la modernité des collections. Chaque élément du site a été conçu pour offrir une expérience d'achat agréable et immersive.",
+    "description2": "Casual Swim, c'est bien plus qu'un simple site de vente, c'est une marque avec une identité forte que j'ai développée à travers un design soigné et une direction artistique cohérente. De la palette de couleurs aux visuels, tout a été pensé pour créer une expérience unique et captivante.",
+    "description3": "Un travail minutieux a été réalisé sur l'ergonomie et l'expérience utilisateur pour maximiser l'engagement et la conversion. Les visuels et mises en page ont été pensés pour sublimer chaque produit et captiver l'attention des clientes.",
+    "technologies": ["Wix", " - Illustrator"],
+    "date": "2023",
+    "categorie": ["Web developpement", " - Personal project"],
+    "image": "project5/img3.png",
+    "imageSimple": "project5/img3.png",
+    "images": [
+      "project5/img3.png",
+      "project5/img1.png",
+      "project5/img2.png",
+      "project5/img4.png"
+    ],
+    "type": "Web developpement",
+    "vue": "none"
+  },
+  {
+    "id": 6,
+    "title": "Shenron",
+    "titleSimple": "#06",
+    "description": "Conçue spécialement pour l'école Shenron, Sign Connect répond aux besoins d'une gestion moderne des signatures. En combinant une technologie de scan performante et une sécurisation avancée des données, elle garantit une expérience utilisateur fiable et efficace.",
+    "description2": "Avec une navigation optimisée et un design pensé pour la praticité, Sign Connect offre une solution rapide et accessible pour signer en toute sécurité. Son intégration intuitive permet à chaque utilisateur de valider sa présence ou son engagement sans difficulté.",
+    "details": "Mon application mobile Sign Connect, développée en React, permet aux utilisateurs de scanner un QR code et de signer numériquement en toute simplicité. Grâce à une interface fluide et intuitive, elle facilite le processus de validation et d'authentification en quelques secondes.",
+    "technologies": ["React", " - Three.js", " - GSAP"],
+    "date": "2024",
+    "categorie": ["Web developpement"],
+    "image": "project3/img1.png",
+    "imageSimple": "project3/img1.png",
+    "images": [
+      "project3/img1.png",
+      "project3/img3.png",
+      "project3/img2.png",
+      "project3/img4.png"
+    ],
+    "type": "Web developpement",
+    "vue": "none"
+  }
+]
+

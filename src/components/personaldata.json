@@ -1,0 +1,11 @@
+{
+    "author": "Victor Wambersie",
+    "site_purpose": "portfolio",
+    "projects": [
+      "Pokédex React",
+      "API FastAPI",
+      "Fairval AIjourneyPath"
+    ],
+    "skills": ["Python", "React", "FastAPI", "GraphQL"],
+    "location": "Antibes, Cannes, Nice"
+}

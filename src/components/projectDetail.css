@@ -1,0 +1,254 @@
+.back{
+    display: flex;
+    justify-content: flex-start;
+    padding: 2rem;
+}
+.back button{
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out;
+}
+.back button:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
+.projects-banner{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+.banner{
+    width: 100%;
+    max-width: 1400px;
+    max-height: 60vh;
+    object-fit: contain;
+    border-end-start-radius: 50px;
+    border-end-end-radius: 50px;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .banner {
+    max-height: 40vh;
+    border-end-start-radius: 30px;
+    border-end-end-radius: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    max-height: 30vh;
+    border-end-start-radius: 20px;
+    border-end-end-radius: 20px;
+  }
+}
+/* Conteneur principal */
+.projects-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 4rem;
+    text-align: center;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .projects-details-container {
+    padding: 2rem 2.3rem;
+  }
+}
+
+/* Titre du projet */
+.projects-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    text-align: left;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive pour tablette */
+@media (max-width: 900px) {
+  .projects-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Responsive pour mobile */
+@media (max-width: 600px) {
+  .projects-title {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+}
+
+/* Contenu principal */
+.projects-content {
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .projects-content {
+    width: 100%;
+    gap: 2rem;
+  }
+}
+
+/* Section de texte + image */
+.projects-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .projects-section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+
+/* Texte des sections */
+.projects-description,
+.projects-details {
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ccc;
+    text-align: justify;
+}
+
+/* Image des sections */
+.projects-image {
+    width: 40%;
+    max-width: 450px;
+    height: auto;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .projects-image {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Boutons de navigation */
+.projects-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}
+
+.projects-button {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.projects-button:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
+.projects-meta{
+    text-align: left;
+}
+
+.projects-meta-container{
+    display: flex;
+}
+.meta-info{
+    width: 50%;
+}
+.meta-info2{
+    width: 50%;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .projects-meta-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .meta-info, .meta-info2 {
+    width: 100%;
+  }
+}
+
+.sidebar-bar {
+    position: fixed;
+    left: 40px;
+    top: 25%;
+    height: 20%;
+    width: 2px;
+    background-color: rgb(169, 169, 169);
+    z-index: 1000;
+  }
+  
+  .sidebar-text {
+    position: absolute;
+    padding-left: 30px;
+    top: -10%;
+    left: 0;
+    transform: rotate(-90deg);
+    transform-origin: left center;
+    background: none;
+    border: none;
+    color: rgb(169, 169, 169);
+    font-size: 14px;
+    font-family: "LEMONMILK-Light", Arial, sans-serif;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  .sidebar-text:hover {
+    color: #ffffff; /* Couleur au survol */
+  }
+  .sidebar-bar:hover {
+    background-color: #ffffff; /* Couleur au survol */
+  }
+
+  /* Responsive pour mobile */
+  @media (max-width: 768px) {
+    .sidebar-bar {
+      left: 10px;
+      top: 20%;
+      height: 15%;
+    }
+    
+    .sidebar-text {
+      font-size: 12px;
+      padding-left: 20px;
+    }
+  }
+
+  .top-pro{
+    display: flex;
+    justify-content: space-between;
+  }

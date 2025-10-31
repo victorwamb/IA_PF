@@ -1,0 +1,24 @@
+@font-face {
+    font-family: "Tusker Grotesk";
+    src: url("../assets/fonts/TuskerGrotesk-1700Bold.ttf") format("truetype");
+    font-weight: bold; /* Spécifie le poids (normal, bold, etc.) */
+    font-style: bold;  /* Spécifie le style (normal, italic, etc.) */
+  }
+  @font-face {
+    font-family: 'LEMONMILK-Light';
+    src: url('../assets/fonts/LEMONMILK-Light.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Grandeur';
+    src: url('../assets/fonts/TANGRANDEUR.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }  
+  @font-face {
+    font-family: 'peosa';
+    src: url('../assets/fonts/Peosa.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }  
