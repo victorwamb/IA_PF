@@ -15,7 +15,8 @@ const ProjectDetails = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:8000'}/api/projects`);
+        const base = process.env.REACT_APP_API_URL || '';
+        const response = await fetch(`${base}/api/projects`);
         if (!response.ok) {
           throw new Error("Failed to fetch projects");
         }

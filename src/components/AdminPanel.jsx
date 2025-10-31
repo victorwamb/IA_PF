@@ -4,7 +4,9 @@ import { useLanguage } from "./languageContext";
 import "../styles/font.css";
 import "./AdminPanel.css";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+// Utiliser le rewrite Vercel en prod
+const API_BASE_URL = process.env.REACT_APP_API_URL || "";
+const apiUrl = (path) => (API_BASE_URL ? `${API_BASE_URL}${path}` : path);
 
 // Variables de développement seulement (pour test local)
 const DEV_ADMIN_PASSWORD = process.env.REACT_APP_DEV_PASSWORD || "admin2025";

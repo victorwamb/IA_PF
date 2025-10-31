@@ -4,7 +4,9 @@ import "./fullPageChatbot.css";
 import { useLanguage } from "./languageContext";
 
 // URL de l'API backend
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
+// En prod (Vercel), laissez REACT_APP_API_URL vide pour utiliser les rewrites
+const API_BASE_URL = process.env.REACT_APP_API_URL || "";
+const apiUrl = (path) => (API_BASE_URL ? `${API_BASE_URL}${path}` : path);
 
 // Questions/réponses prédéfinies (fallback si pas d'API OpenAI)
 const predefinedQA = [
@@ -93,7 +95,7 @@ async function getAIResponse(userMessage, conversationHistory) {
       content: msg.text
     }));
 
-    const response = await fetch(`${API_BASE_URL}/api/chat`, {
+    const response = await fetch(apiUrl(`/api/chat`), {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
