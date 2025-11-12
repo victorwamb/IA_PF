@@ -8,7 +8,7 @@ import json
 import os
 from pathlib import Path
 import shutil
-from datetime import datetime
+from datetime import datetime, timezone
 import secrets
 from dotenv import load_dotenv
 
@@ -379,6 +379,15 @@ async def upload_file(file: UploadFile = File(...)):
 async def health_check():
     """Vérification de l'état de l'API"""
     return {"status": "ok", "message": "API is running"}
+
+
+@app.get("/cron/ping")
+async def cron_ping():
+    """Endpoint simple pour les vérifications CRON"""
+    return {
+        "status": "ok",
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
 
 if __name__ == "__main__":
     import uvicorn
