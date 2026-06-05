@@ -1,15 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./products.css";
-import img11 from "../assets/images/project1/img1.png";
-import img12 from "../assets/images/project1/img2.png";
-import img13 from "../assets/images/project1/img3.png";
-import img21 from "../assets/images/project2/img1.png";
-import img22 from "../assets/images/project2/img2.png";
-import img23 from "../assets/images/project2/img3.png";
-import img31 from "../assets/images/project6/img1.png";
-import img32 from "../assets/images/project6/img2.png";
-import img33 from "../assets/images/project6/img3.png";
+import img11 from "../assets/images/project3/img1.png";
+import img12 from "../assets/images/project3/ia.png";
+import img13 from "../assets/images/project3/img5.png";
+import img21 from "../assets/images/project7/img1.png";
+import img22 from "../assets/images/project7/img2.png";
+import img23 from "../assets/images/project7/img3.png";
+import img31 from "../assets/images/project10/img1.png";
+import img32 from "../assets/images/project10/img2.png";
+import img33 from "../assets/images/project10/img3.png";
 import styled from "styled-components";
 import { useLanguage } from "./languageContext"; 
 
@@ -32,21 +32,21 @@ const translations = {
 
 const productsData = [
   {
-    id: 1,
-    creationDate: "2024",
+    id: 3,
+    creationDate: "2025",
     mainImage: img11,
     topImage: img12,
     bottomImage: img13,
   },
   {
-    id: 2,
-    creationDate: "2025",
-    mainImage: img22,
-    topImage: img21,
+    id: 7,
+    creationDate: "2024",
+    mainImage: img21,
+    topImage: img22,
     bottomImage: img23,
   },
   {
-    id: 3,
+    id: 10,
     creationDate: "2023",
     mainImage: img31,
     topImage: img32,

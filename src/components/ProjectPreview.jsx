@@ -1,9 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./ProjectPreview.css"; // Fichier CSS contenant le style du "livre"
-import img1 from "../assets/images/project1/img1.png";
-import img2 from "../assets/images/project1/img2.png";
-import img3 from "../assets/images/project1/img3.png";
+import img1 from "../assets/images/project7/img1.png";
+import img2 from "../assets/images/project7/img2.png";
+import img3 from "../assets/images/project7/img3.png";
 
 // Exemple de données pour les projets
 const projects = [

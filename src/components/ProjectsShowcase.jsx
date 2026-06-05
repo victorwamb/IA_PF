@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import CustomCursor from "./CustomCursor"; // Composant pour le curseur personnalisé
 import "./ProjectShowcase.css";
-import img1 from "../assets/images/project1/img1.png";
-import img2 from "../assets/images/project1/img2.png";
-import img3 from "../assets/images/project1/img3.png";
+import img1 from "../assets/images/project7/img1.png";
+import img2 from "../assets/images/project7/img2.png";
+import img3 from "../assets/images/project7/img3.png";
 
 function ProjectShowcase() {
   // Tableau fictif de projets

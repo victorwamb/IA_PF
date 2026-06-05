@@ -15,3 +15,12 @@ code {
 a, button, li, div, img {
   cursor: none !important;
 }
+
+/* Masquer les barres de défilement (traits blanc/gris) */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}

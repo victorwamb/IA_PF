@@ -11,7 +11,7 @@ import ProjectPreview from "./components/ProjectPreview";
 import Works from "./components/Works";
 import CustomCursor from "./components/CustomCursor";
 import Loader2 from "./components/Loader2";
-import Chatbot from "./components/Chatbot";
+
 import ProjectDetails from "./components/ProjectDetails";
 import { LanguageProvider } from "./components/languageContext";
 import FullPageChatbot from "./components/FullPageChatbot";
@@ -21,7 +21,7 @@ function App() {
   return (
     <LanguageProvider>
       <Router>
-        <Chatbot />
+
         <CustomCursor />
         <PageWrapper />
       </Router>
