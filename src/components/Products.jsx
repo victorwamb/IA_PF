@@ -41,8 +41,8 @@ const productsData = [
   {
     id: 7,
     creationDate: "2024",
-    mainImage: img21,
-    topImage: img22,
+    mainImage: img22,
+    topImage: img21,
     bottomImage: img23,
   },
   {
