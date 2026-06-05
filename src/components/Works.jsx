@@ -1,159 +1,150 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Works.css";
-import "../styles/font.css";
-import ScrambleText from "./Scrambletext";
-import { useLanguage } from "./languageContext";
-import { getSimpleImage } from "../utils/projectImages";
-import projectsDefault from "../data/projects.json";
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import './Works.css';
+import '../styles/font.css';
+import ScrambleText from './Scrambletext';
+import { useLanguage } from './languageContext';
+import { getSimpleImage } from '../utils/projectImages';
+import projectsDefault from '../data/projects.json';
+
+gsap.registerPlugin(ScrollTrigger);
 
 function Works() {
   const [projects, setProjects] = useState([]);
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [animatePreview, setAnimatePreview] = useState(false);
-
+  const [hoveredId, setHoveredId] = useState(null);
   const navigate = useNavigate();
   const { language } = useLanguage();
+  const containerRef = useRef(null);
+  const cardsRef = useRef([]);
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const base = process.env.REACT_APP_API_URL || '';
         const response = await fetch(`${base}/api/projects`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch projects");
-        }
+        if (!response.ok) throw new Error('Failed');
         const data = await response.json();
         const projectData = data.projects || projectsDefault;
-        
-        // Transformer les données pour ajouter les images
-        const projectsWithImages = projectData.map(project => ({
+        const projectsWithImages = projectData.map((project) => ({
           id: project.id,
-          title: project.titleSimple || project.title,
-          description: project.title,
+          title: project.title,
+          titleSimple: project.titleSimple || project.title,
+          description: project.description,
           image: getSimpleImage(project.image || project.imageSimple),
-          type: project.type
-        }));
-        
-        setProjects(projectsWithImages);
-        if (projectsWithImages.length > 0) {
-          setSelectedProject(projectsWithImages[0]);
-        }
-      } catch (err) {
-        console.error("Error fetching projects from API, using defaults:", err);
-        // Fallback sur les données par défaut
-        const projectsWithImages = projectsDefault.map(project => ({
-          id: project.id,
-          title: project.titleSimple || project.title,
-          description: project.title,
-          image: getSimpleImage(project.image || project.imageSimple),
-          type: project.type
+          type: project.type,
+          date: project.date,
+          technologies: project.technologies,
         }));
         setProjects(projectsWithImages);
-        if (projectsWithImages.length > 0) {
-          setSelectedProject(projectsWithImages[0]);
-        }
+      } catch {
+        const projectsWithImages = projectsDefault.map((project) => ({
+          id: project.id,
+          title: project.title,
+          titleSimple: project.titleSimple || project.title,
+          description: project.description,
+          image: getSimpleImage(project.image || project.imageSimple),
+          type: project.type,
+          date: project.date,
+          technologies: project.technologies,
+        }));
+        setProjects(projectsWithImages);
       }
     };
-    
     fetchProjects();
   }, []);
 
+  // GSAP stagger reveal
+  useEffect(() => {
+    if (projects.length === 0) return;
+
+    const ctx = gsap.context(() => {
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        gsap.fromTo(
+          card,
+          { y: 60, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 90%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [projects]);
+
   const translations = {
     en: {
-      home: "Home",
-      work: "Work",
-      about: "About"
+      title: 'All Projects',
+      back: '← Back',
     },
     fr: {
-      home: "Accueil",
-      work: "Travail",
-      about: "À propos"
-    }
+      title: 'Tous les Projets',
+      back: '← Retour',
+    },
   };
-
-  const handleProjectHover = (project) => {
-    setSelectedProject(project);
-    setAnimatePreview(true);
-  };
-
-  const handleAnimationEnd = () => {
-    setAnimatePreview(false);
-  };
-
-  const Goback = () => {
-    navigate("/");
-  };
-
-  // 🔥 Mettre à jour GoON pour inclure l'ID du projet sélectionné
-  const GoON = (id) => {
-    navigate(`/project-detail/${id}`);
-  };
-
-  if (!selectedProject) {
-    return <div>Loading...</div>;
-  }
 
   return (
-    <div
-      className="styled-page-container"
-      style={{ fontFamily: "LEMONMILK-Light, Arial, sans-serif" }}
-    >
-      {/* Menu latéral gauche */}
-      <div className="sidebar">
-        <h1>Wambersie Victor</h1>
-        <ul className="navigation">
-          <li onClick={Goback}>{translations[language].home}</li>
-          <li className="active">{translations[language].work}</li>
-          <li onClick={Goback}>{translations[language].about}</li>
-        </ul>
+    <div className="works-page" ref={containerRef}>
+      {/* Header bar */}
+      <div className="works-header">
+        <button className="works-back" onClick={() => navigate('/')}>
+          {translations[language].back}
+        </button>
+        <h1 className="works-title">
+          {translations[language].title}
+        </h1>
+        <span className="works-count">{projects.length} projects</span>
       </div>
 
-      {/* Liste des projets */}
-      <div className="projects-list">
-        {projects.map((project) => (
+      {/* Project list */}
+      <div className="works-list">
+        {projects.map((project, i) => (
           <div
             key={project.id}
-            className="project-item"
-            onMouseEnter={() => handleProjectHover(project)}
-            onClick={() => GoON(project.id)}
+            ref={(el) => (cardsRef.current[i] = el)}
+            className={`works-card ${hoveredId === project.id ? 'hovered' : ''}`}
+            onMouseEnter={() => setHoveredId(project.id)}
+            onMouseLeave={() => setHoveredId(null)}
+            onClick={() => navigate(`/project-detail/${project.id}`)}
           >
-            <img src={project.image} alt={project.title} />
-            <div className="project-item-content">
-              <div className="project-title">{project.title}</div>
-              <div className="project-description">{project.description}</div>
+            <div className="works-card__left">
+              <span className="works-card__number">{project.titleSimple}</span>
+              <div className="works-card__info">
+                <h2 className="works-card__title">
+                  {hoveredId === project.id ? (
+                    <ScrambleText text={project.title} />
+                  ) : (
+                    project.title
+                  )}
+                </h2>
+                <p className="works-card__meta">
+                  {project.date} — {project.type}
+                </p>
+              </div>
+            </div>
+            <div className="works-card__right">
+              <div className="works-card__image-wrapper">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="works-card__image"
+                />
+              </div>
+              <span className="works-card__arrow">→</span>
             </div>
           </div>
         ))}
-      </div>
-
-      {/* Preview du projet sélectionné */}
-      <div className="preview-container">
-        <div className="preview2">
-          <div className="preview-header">
-            <h2
-              style={{
-                fontFamily: "LEMONMILK-Light, Arial, sans-serif",
-              }}
-            >
-              <ScrambleText text={selectedProject.description} />
-            </h2>
-          </div>
-          <div className="preview-desc">{selectedProject.type}</div>
-          <div className="preview-desc">{selectedProject.title}</div>
-        </div>
-        <div className="preview" onClick={() => GoON(selectedProject.id)}>
-          <img
-            src={selectedProject.image}
-            alt={selectedProject.title}
-            className={animatePreview ? "preview-image animate" : "preview-image"}
-            onAnimationEnd={handleAnimationEnd}
-          />
-          <div
-            className="preview-text"
-            style={{ fontFamily: "LEMONMILK-Light, Arial, sans-serif" }}
-          ></div>
-        </div>
       </div>
     </div>
   );

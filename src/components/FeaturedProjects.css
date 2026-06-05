@@ -1,0 +1,191 @@
+/* ── Featured Projects Section ── */
+
+.featured-section {
+  position: relative;
+  z-index: 1;
+  padding: 8rem 4rem 6rem;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .featured-section {
+    padding: 4rem 1.5rem 3rem;
+  }
+}
+
+/* Header */
+.featured-header {
+  margin-bottom: 4rem;
+}
+
+.featured-title {
+  font-family: 'LEMONMILK-Light', Arial, sans-serif;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #fff;
+  margin: 0 0 1rem 0;
+}
+
+.featured-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Grid */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 992px) {
+  .featured-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Staggered layout */
+.featured-card--1 {
+  margin-top: 3rem;
+}
+
+.featured-card--2 {
+  margin-top: 6rem;
+}
+
+@media (max-width: 992px) {
+  .featured-card--1, .featured-card--2 {
+    margin-top: 0;
+  }
+}
+
+/* Card */
+.featured-card {
+  cursor: pointer;
+  position: relative;
+}
+
+.featured-card__image-wrapper {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.featured-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.6s ease;
+  filter: grayscale(30%) brightness(0.85);
+}
+
+.featured-card:hover .featured-card__image {
+  transform: scale(1.08);
+  filter: grayscale(0%) brightness(1);
+}
+
+/* Overlay */
+.featured-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.featured-card:hover .featured-card__overlay {
+  opacity: 1;
+}
+
+.featured-card__number {
+  font-family: 'LEMONMILK-Light', Arial, sans-serif;
+  font-size: 2.5rem;
+  color: rgba(255, 255, 255, 0.3);
+  align-self: flex-end;
+}
+
+.featured-card__cta {
+  font-family: 'LEMONMILK-Light', Arial, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 1rem;
+  width: fit-content;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.featured-card__cta:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* Card info */
+.featured-card__info {
+  padding: 1rem 0;
+}
+
+.featured-card__title {
+  font-family: 'LEMONMILK-Light', Arial, sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin: 0 0 0.4rem 0;
+}
+
+.featured-card__meta {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Footer */
+.featured-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.featured-view-all {
+  font-family: 'LEMONMILK-Light', Arial, sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 1rem 2.5rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.featured-view-all:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}

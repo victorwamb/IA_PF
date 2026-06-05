@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLanguage } from "../components/languageContext"; // Importation du contexte
+import { useLanguage } from "../components/languageContext";
 import emailjs from '@emailjs/browser';
+import './contact.css';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,66 +13,44 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState({ type: "", message: "" });
   const formRef = useRef(null);
 
-  const { language } = useLanguage(); // Utilisation du contexte
+  const { language } = useLanguage();
 
   const translations = {
     en: {
-      contactMe: "Contact Me",
-      name: "Name",
-      email: "Email",
-      message: "Your message",
-      send: "SEND",
-      infoTitle: "Victor Wambersie",
-      emailLabel: "Email:",
-      githubLabel: "GitHub:",
-      locationLabel: "Location:",
-      hardSkillsLabel: "Hard Skills:",
-      passionsLabel: "Passions:",
-      passionsLabel2: " Artificial Intelligence, Rally and drawing",
-      hobbiesLabel: "Hobbies:",
-      hobbiesLabel2: "Basketball, video games and drawing",
-      futureProjectsLabel: "Future Projects:",
-      futureProjectsLabel2: "Advanced agentic AI systems",
+      contactMe: "Let's Talk",
+      name: "Your Name",
+      email: "Your Email",
+      message: "Tell me about your project...",
+      send: "SEND MESSAGE",
+      infoTitle: "VICTOR WAMBERSIE",
+      emailLabel: "EMAIL",
+      githubLabel: "GITHUB",
+      locationLabel: "LOCATION",
+      hardSkillsLabel: "EXPERTISE",
       successMessage: "Message sent successfully! I'll get back to you soon.",
       errorMessage: "Failed to send message. Please try again or contact me directly at victor.wambersie@gmail.com",
-      sending: "Sending...",
+      sending: "SENDING...",
+      locationDesc: "Antibes, Cannes, Nice (France)",
+      skillsDesc: "Python, FastAPI, PyTorch, LLM Integration, RAG, Fine-tuning, Agentic Systems, AI Engineering"
     },
     fr: {
-      contactMe: "Me Contacter",
-      name: "Nom",
-      email: "Email",
-      message: "Votre message",
-      send: "ENVOYER",
+      contactMe: "Discutons",
+      name: "Votre Nom",
+      email: "Votre Email",
+      message: "Parlez-moi de votre projet...",
+      send: "ENVOYER LE MESSAGE",
       successMessage: "Message envoyé avec succès ! Je vous répondrai bientôt.",
       errorMessage: "Échec de l'envoi. Veuillez réessayer ou me contacter directement à victor.wambersie@gmail.com",
-      sending: "Envoi...",
-      infoTitle: "Victor Wambersie",
-      emailLabel: "Email :",
-      githubLabel: "GitHub :",
-      locationLabel: "Localisation :",
-      hardSkillsLabel: "Compétences Techniques :",
-      passionsLabel: "Passions :",
-      passionsLabel2: " Intelligence Artificielle, Rallye et dessin",
-      hobbiesLabel: "Loisirs :",
-      hobbiesLabel2: "Basket, jeux vidéos et dessin",
-      futureProjectsLabel: "Projets Futurs :",
-      futureProjectsLabel2: "Systèmes IA agentiques avancés",
+      sending: "ENVOI...",
+      infoTitle: "VICTOR WAMBERSIE",
+      emailLabel: "EMAIL",
+      githubLabel: "GITHUB",
+      locationLabel: "LOCALISATION",
+      hardSkillsLabel: "EXPERTISE",
+      locationDesc: "Antibes, Cannes, Nice (France)",
+      skillsDesc: "Python, FastAPI, PyTorch, Intégration LLM, RAG, Fine-tuning, Systèmes Agentiques, Ingénierie IA"
     },
   };
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
-  useEffect(() => {
-    // Gestion du resize
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,9 +66,8 @@ const Contact = () => {
     setSubmitStatus({ type: "", message: "" });
 
     try {
-      // Envoi via EmailJS avec credentials depuis variables d'environnement
       const emailjsServiceId = process.env.REACT_APP_EMAILJS_SERVICE_ID || 'service_34l3ggh';
-      const emailjsTemplateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_srkaodk';
+      const emailjsTemplateId = process.env.REACT_APP_EMAILJS_Template_ID || 'template_srkaodk';
       const emailjsPublicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '9zAhBQLQtejwzEgXs';
       
       await emailjs.send(
@@ -104,7 +82,7 @@ const Contact = () => {
       );
 
       setSubmitStatus({ type: "success", message: translations[language].successMessage });
-      setFormData({ name: "", email: "", message: "" }); // Reset le formulaire
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("EmailJS error:", error);
       setSubmitStatus({ type: "error", message: translations[language].errorMessage });
@@ -113,180 +91,92 @@ const Contact = () => {
     }
   };
 
-  const isMobile = windowWidth <= 768;
-
   return (
-    <div className={isMobile ? "contact-mobile" : ""} style={{ ...styles.container, flexDirection: isMobile ? "column" : "row" }}>
-      {/* Formulaire de contact */}
-      <div className={isMobile ? "contact-form-mobile" : ""} style={{ ...styles.contactForm, borderRight: isMobile ? "none" : "1px solid white"}}>
-        <h2 style={styles.title}>{translations[language].contactMe}</h2>
-        <form ref={formRef} onSubmit={handleSubmit} style={styles.form}>
-          <input
-            type="text"
-            placeholder={translations[language].name}
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
-          <input
-            type="email"
-            placeholder={translations[language].email}
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
-          <textarea
-            name="message"
-            placeholder={translations[language].message}
-            value={formData.message}
-            onChange={handleChange}
-            rows="5"
-            style={styles.textarea}
-            required
-          ></textarea>
+    <div className="contact-wrapper">
+      <div className="contact-container">
+        
+        {/* Info Section */}
+        <div className="contact-info">
+          <h2 className="contact-title">{translations[language].infoTitle}</h2>
           
-          {submitStatus.message && (
-            <div style={{
-              padding: "10px",
-              backgroundColor: submitStatus.type === "success" ? "rgba(0, 200, 0, 0.2)" : "rgba(200, 0, 0, 0.2)",
-              border: `1px solid ${submitStatus.type === "success" ? "#00c800" : "#c80000"}`,
-              borderRadius: "4px",
-              color: submitStatus.type === "success" ? "#00ff00" : "#ff0000",
-              fontSize: "14px"
-            }}>
-              {submitStatus.message}
-            </div>
-          )}
+          <div className="contact-info__block">
+            <span className="contact-info__label">{translations[language].emailLabel}</span>
+            <a href="mailto:victor.wambersie@gmail.com" className="contact-info__link">
+              victor.wambersie@gmail.com
+            </a>
+          </div>
           
-          <button type="submit" style={styles.button} disabled={isSubmitting}>
-            {isSubmitting ? translations[language].sending : translations[language].send}
-          </button>
-        </form>
-      </div>
+          <div className="contact-info__block">
+            <span className="contact-info__label">{translations[language].githubLabel}</span>
+            <a href="https://github.com/bubom6755" target="_blank" rel="noopener noreferrer" className="contact-info__link">
+              github.com/bubom6755
+            </a>
+          </div>
+          
+          <div className="contact-info__block">
+            <span className="contact-info__label">{translations[language].locationLabel}</span>
+            <span className="contact-info__text">{translations[language].locationDesc}</span>
+          </div>
 
-      {/* Informations */}
-      <div style={styles.infoSection}>
-        <h2 style={styles.title}>{translations[language].infoTitle}</h2>
-        <p style={styles.text}>
-          <strong style={{ color: "#686aff" }}>{translations[language].emailLabel}</strong>{" "}
-          <a href="mailto: victor.wambersie@gmail.com" style={{ color: "#fff", textDecoration: "none" }}>
-            victor.wambersie@gmail.com
-          </a>
-        </p>
-        <p style={styles.text}>
-          <strong style={{ color: "#686aff" }}>{translations[language].githubLabel}</strong>{" "}
-          <a
-            href="https://github.com/bubom6755"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={styles.link}
-          >
-            github.com/bubom6755
-          </a>
-        </p>
-        <p style={styles.text}>
-          <strong>{translations[language].locationLabel}</strong> Antibes, Cannes, Nice (France)
-        </p>
-        <p style={styles.text}>
-          <strong style={{ color: "#686aff" }}>{translations[language].hardSkillsLabel}</strong> Python, FastAPI, Streamlit, PyTorch, Ollama, OpenAI API, LLM Integration, RAG, Fine-tuning, FAISS, Agentic Systems, Prompt Engineering
-        </p>
-        <p style={styles.text}>
-          <strong>{translations[language].passionsLabel}</strong>{translations[language].passionsLabel2}
-        </p>
-        <p style={styles.text}>
-          <strong>{translations[language].hobbiesLabel}</strong> {translations[language].hobbiesLabel2}
-        </p>
-        <p style={styles.text}>
-          <strong>{translations[language].futureProjectsLabel}</strong> {translations[language].futureProjectsLabel2}
-        </p>
+          <div className="contact-info__block">
+            <span className="contact-info__label">{translations[language].hardSkillsLabel}</span>
+            <span className="contact-info__text">{translations[language].skillsDesc}</span>
+          </div>
+        </div>
+
+        {/* Form Section */}
+        <div className="contact-form">
+          <h2 className="contact-title">{translations[language].contactMe}</h2>
+          <form ref={formRef} onSubmit={handleSubmit} className="form-elements">
+            <div className="input-group">
+              <input
+                type="text"
+                placeholder={translations[language].name}
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="contact-input"
+              />
+            </div>
+            <div className="input-group">
+              <input
+                type="email"
+                placeholder={translations[language].email}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="contact-input"
+              />
+            </div>
+            <div className="input-group">
+              <textarea
+                name="message"
+                placeholder={translations[language].message}
+                value={formData.message}
+                onChange={handleChange}
+                rows="4"
+                required
+                className="contact-textarea"
+              ></textarea>
+            </div>
+            
+            {submitStatus.message && (
+              <div className={`status-message ${submitStatus.type}`}>
+                {submitStatus.message}
+              </div>
+            )}
+            
+            <button type="submit" className="contact-btn" disabled={isSubmitting}>
+              {isSubmitting ? translations[language].sending : translations[language].send}
+            </button>
+          </form>
+        </div>
+
       </div>
     </div>
   );
-};
-
-const styles = {
-  container: {
-    display: "flex",
-    flexDirection: "row", // Par défaut en ligne (row)
-    backgroundColor: "#000",
-    color: "#fff",
-    padding: "20px",
-    border: "1px solid #fff",
-    maxWidth: "1500px",
-    margin: "auto",
-    gap: "20px",
-  },
-  contactForm: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "column",
-    padding: "20px",
-    borderRight: "1px solid #fff",
-  },
-  infoSection: {
-    flex: 1,
-    padding: "20px",
-  },
-  title: {
-    fontFamily: "LEMONMILK-Light, sans-serif",
-    fontSize: "24px",
-    marginBottom: "20px",
-    textAlign: "left",
-  },
-  form: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-  },
-  input: {
-    fontFamily: "LEMONMILK-Light, sans-serif",
-    fontSize: "16px",
-    padding: "10px",
-    border: "1px solid #fff",
-    backgroundColor: "#000",
-    color: "#fff",
-  },
-  textarea: {
-    fontFamily: "LEMONMILK-Light, sans-serif",
-    fontSize: "16px",
-    padding: "15px",
-    height: "200px",
-    border: "1px solid #fff",
-    backgroundColor: "#000",
-    color: "#fff",
-  },
-  button: {
-    fontFamily: "LEMONMILK-Light, sans-serif",
-    fontSize: "16px",
-    padding: "10px",
-    border: "1px solid #fff",
-    backgroundColor: "#fff",
-    color: "#000",
-    cursor: "pointer",
-    transition: "all 0.3s",
-  },
-  text: {
-    fontFamily: "LEMONMILK-Light, sans-serif",
-    fontSize: "16px",
-    lineHeight: "2.5",
-    margin: "10px 0",
-  },
-  link: {
-    color: "#fff",
-    textDecoration: "underline",
-    transition: "opacity 0.3s",
-  },
-
-    "@media (max-width: 600px)": {
-      flexDirection: "column", // Passe en colonne sur mobile
-      gap: "15px", // Espace ajusté pour les petits écrans
-      padding: "10px", // Réduit le padding pour mobile
-    },
-  
 };
 
 export default Contact;
