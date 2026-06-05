@@ -66,10 +66,8 @@ function SphereParticles({ pointCount = 2000, radius = 3 }) {
       const py = attr.getY(i)
       const pz = attr.getZ(i)
 
-      // Vitesse actuelle
-      const vx = velocities[i].x
-      const vy = velocities[i].y
-      const vz = velocities[i].z
+      // Vitesse actuelle (not extracted as unused)
+
 
       // Position de base
       const bx = basePositions[i * 3 + 0]

@@ -92,7 +92,7 @@ const Contact = () => {
       const emailjsTemplateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || 'template_srkaodk';
       const emailjsPublicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '9zAhBQLQtejwzEgXs';
       
-      const result = await emailjs.send(
+      await emailjs.send(
         emailjsServiceId,
         emailjsTemplateId,
         {

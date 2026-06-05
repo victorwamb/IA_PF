@@ -6,7 +6,6 @@ import "./AdminPanel.css";
 
 // Utiliser le rewrite Vercel en prod
 const API_BASE_URL = process.env.REACT_APP_API_URL || "";
-const apiUrl = (path) => (API_BASE_URL ? `${API_BASE_URL}${path}` : path);
 
 // Variables de développement seulement (pour test local)
 const DEV_ADMIN_PASSWORD = process.env.REACT_APP_DEV_PASSWORD || "admin2025";
@@ -110,6 +109,7 @@ const AdminPanel = () => {
     if (!isProtected) {
       fetchProjects();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isProtected]);
 
   const fetchProjects = async () => {

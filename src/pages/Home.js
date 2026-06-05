@@ -81,6 +81,7 @@ function Home() {
                 <Link to="/chatbotpage">{translations[language].chatbot}</Link>
               </li>
               <li onClick={scrollToContact}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a>{translations[language].contact}</a>
               </li>
             </ul>
@@ -90,9 +91,11 @@ function Home() {
           <nav>
             <ul>
               <li onClick={() => setLanguage("fr")}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a>FRANCAIS</a>
               </li>
               <li onClick={() => setLanguage("en")}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a>ENGLISH</a>
               </li>
             </ul>
@@ -118,6 +121,7 @@ function Home() {
               <Link to="/chatbotpage" onClick={() => setIsMobileMenuOpen(false)}>{translations[language].chatbot}</Link>
             </li>
             <li onClick={() => { scrollToContact(); setIsMobileMenuOpen(false); }}>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a>{translations[language].contact}</a>
             </li>
             <li className="language-toggle">
@@ -136,7 +140,6 @@ function Home() {
             </div>
             <h2>{translations[language].developer}</h2>
           </BigTitle>
-          <a>{translations[language].info}</a>
         </LeftSection>
         <CenterSection>
           <SphereAnimation />
