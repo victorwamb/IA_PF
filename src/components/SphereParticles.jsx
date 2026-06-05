@@ -153,7 +153,6 @@ function ParticleField({ pointCount = 2500, radius = 3.5 }) {
     return { currentPosA: current, velocities: vel, randomSpeeds: speeds };
   }, [basePosA, pointCount]);
 
-  const { viewport } = useThree();
 
   const uniforms = useMemo(() => ({
     uProgress: { value: 0 },
